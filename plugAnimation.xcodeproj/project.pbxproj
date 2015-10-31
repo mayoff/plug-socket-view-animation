@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		315D47781BE58A5F00B45760 /* edgeMarkers2.png in Resources */ = {isa = PBXBuildFile; fileRef = 315D47771BE58A5F00B45760 /* edgeMarkers2.png */; };
 		319FC8911BE5696F00D640FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 319FC8901BE5696F00D640FF /* main.m */; };
 		319FC8941BE5696F00D640FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 319FC8931BE5696F00D640FF /* AppDelegate.m */; };
 		319FC8971BE5696F00D640FF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 319FC8961BE5696F00D640FF /* ViewController.m */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		315D47771BE58A5F00B45760 /* edgeMarkers2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edgeMarkers2.png; sourceTree = "<group>"; };
 		319FC88C1BE5696F00D640FF /* plugAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plugAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		319FC8901BE5696F00D640FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		319FC8921BE5696F00D640FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				319FC8A91BE56B5A00D640FF /* edgeMarkers.png */,
+				315D47771BE58A5F00B45760 /* edgeMarkers2.png */,
 				319FC8921BE5696F00D640FF /* AppDelegate.h */,
 				319FC8931BE5696F00D640FF /* AppDelegate.m */,
 				319FC8951BE5696F00D640FF /* ViewController.h */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				319FC8AA1BE56B5A00D640FF /* edgeMarkers.png in Resources */,
+				315D47781BE58A5F00B45760 /* edgeMarkers2.png in Resources */,
 				319FC89F1BE5697000D640FF /* LaunchScreen.storyboard in Resources */,
 				319FC89C1BE5696F00D640FF /* Assets.xcassets in Resources */,
 				319FC89A1BE5696F00D640FF /* Main.storyboard in Resources */,
@@ -302,6 +306,7 @@
 				319FC8A51BE5697000D640FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
