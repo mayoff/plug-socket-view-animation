@@ -1,25 +1,75 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Root View">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSe-2X-MbH">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Small" id="hut-xP-ddH">
+                                        <connections>
+                                            <action selector="smallButtonWasTapped:" destination="BYZ-38-t0r" id="abv-qt-Zac"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="He7-uh-l1O"/>
+                                    <barButtonItem title="Check" id="7Lh-to-lNf">
+                                        <connections>
+                                            <action selector="checkWasTapped:" destination="BYZ-38-t0r" id="pcu-GK-JSh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ht2-Be-TZw"/>
+                                    <barButtonItem title="Big" id="Jmg-ij-3Wh">
+                                        <connections>
+                                            <action selector="bigButtonWasTapped:" destination="BYZ-38-t0r" id="hL1-ay-f6U"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="edgeMarkers.png" translatesAutoresizingMaskIntoConstraints="NO" id="TjR-ME-608" userLabel="Socket View">
+                                <rect key="frame" x="0.0" y="20" width="320" height="320"/>
+                                <color key="backgroundColor" red="0.99919813869999996" green="0.79837877270000002" blue="0.94132425559999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="8xD-wL-6yG"/>
+                                    <constraint firstAttribute="height" constant="320" id="wkB-7t-HEc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kSe-2X-MbH" secondAttribute="trailing" id="4do-g5-Tsg"/>
+                            <constraint firstItem="TjR-ME-608" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dbt-4o-LIb"/>
+                            <constraint firstItem="kSe-2X-MbH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LIX-0z-rD9"/>
+                            <constraint firstItem="TjR-ME-608" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="a8B-MM-Q7C"/>
+                            <constraint firstItem="kSe-2X-MbH" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="z2E-6G-eIp"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="socketHeightConstraint" destination="wkB-7t-HEc" id="WB6-DZ-3iI"/>
+                        <outlet property="socketView" destination="TjR-ME-608" id="xmy-lB-6h2"/>
+                        <outlet property="socketWidthConstraint" destination="8xD-wL-6yG" id="LAb-Pl-A8q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="849" y="494"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="edgeMarkers.png" width="320" height="320"/>
+    </resources>
 </document>

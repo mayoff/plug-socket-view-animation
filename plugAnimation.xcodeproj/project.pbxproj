@@ -13,6 +13,7 @@
 		319FC89A1BE5696F00D640FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 319FC8981BE5696F00D640FF /* Main.storyboard */; };
 		319FC89C1BE5696F00D640FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319FC89B1BE5696F00D640FF /* Assets.xcassets */; };
 		319FC89F1BE5697000D640FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 319FC89D1BE5697000D640FF /* LaunchScreen.storyboard */; };
+		319FC8AA1BE56B5A00D640FF /* edgeMarkers.png in Resources */ = {isa = PBXBuildFile; fileRef = 319FC8A91BE56B5A00D640FF /* edgeMarkers.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		319FC89B1BE5696F00D640FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		319FC89E1BE5697000D640FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		319FC8A01BE5697000D640FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		319FC8A91BE56B5A00D640FF /* edgeMarkers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edgeMarkers.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		319FC88E1BE5696F00D640FF /* plugAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				319FC8A91BE56B5A00D640FF /* edgeMarkers.png */,
 				319FC8921BE5696F00D640FF /* AppDelegate.h */,
 				319FC8931BE5696F00D640FF /* AppDelegate.m */,
 				319FC8951BE5696F00D640FF /* ViewController.h */,
@@ -136,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				319FC8AA1BE56B5A00D640FF /* edgeMarkers.png in Resources */,
 				319FC89F1BE5697000D640FF /* LaunchScreen.storyboard in Resources */,
 				319FC89C1BE5696F00D640FF /* Assets.xcassets in Resources */,
 				319FC89A1BE5696F00D640FF /* Main.storyboard in Resources */,
