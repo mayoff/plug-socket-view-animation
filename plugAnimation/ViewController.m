@@ -67,13 +67,6 @@
         }
     }
 
-    static CGSize sizePriorToAdditiveBasicAnimation(CGSize size, CABasicAnimation *animation) {
-        CGSize adjustment = [animation.fromValue CGSizeValue];
-        size.width += adjustment.width;
-        size.height += adjustment.height;
-        return size;
-    }
-
     - (IBAction)delayWasTapped:(id)sender {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self plugWasTapped:nil];
@@ -87,39 +80,48 @@
             return;
         }
 
-        CABasicAnimation *animation;
-        NSString *key;
-        [self getSocketSizeMostRecentAdditiveBasicAnimation:&animation key:&key];
-        if (animation == nil) {
+        if (![self socketViewHasSizeAnimation]) {
             self.plugView.frame = self.socketView.bounds;
             [self.socketView addSubview:self.plugView];
             return;
         }
 
         CGSize endSize = self.socketView.bounds.size;
-        CGSize beginSize = sizePriorToAdditiveBasicAnimation(endSize, animation);
-
-        UIImage *beginImage = [self imageOfView:self.plugView atSize:beginSize];
-        UIImage *endImage = [self imageOfView:self.plugView atSize:endSize];
-
         self.placeholderView.frame = self.socketView.bounds;
-        self.placeholderView.image = endImage;
+        self.placeholderView.image = [self imageOfView:self.plugView atSize:endSize];
         [self.socketView addSubview:self.placeholderView];
-
-        CABasicAnimation *contentsAnimation = [animation copy];
-        contentsAnimation.keyPath = @"contents";
-        contentsAnimation.additive = NO;
-        contentsAnimation.fromValue = (__bridge id _Nullable)(beginImage.CGImage);
-        contentsAnimation.toValue = (__bridge id _Nullable)(endImage.CGImage);
 
         [CATransaction begin]; {
             [CATransaction setCompletionBlock:^{
                 [self replacePlaceholderViewWithPlugView];
             }];
-
-            [self.placeholderView.layer addAnimation:animation forKey:key];
-            [self.placeholderView.layer addAnimation:contentsAnimation forKey:@"contents"];
+            [self copySizeAnimationsFromSocketToPlaceholder];
         } [CATransaction commit];
+    }
+
+    - (BOOL)socketViewHasSizeAnimation {
+        for (NSString *key in self.socketView.layer.animationKeys) {
+            CAAnimation *rawAnimation = [self.socketView.layer animationForKey:key];
+            if ([rawAnimation isKindOfClass:[CAPropertyAnimation class]]) {
+                CAPropertyAnimation *animation = (CAPropertyAnimation *)rawAnimation;
+                if ([animation.keyPath isEqualToString:@"bounds.size"]) {
+                    return YES;
+                }
+            }
+        }
+        return NO;
+    }
+
+    - (void)copySizeAnimationsFromSocketToPlaceholder {
+        for (NSString *key in self.socketView.layer.animationKeys) {
+            CAAnimation *rawAnimation = [self.socketView.layer animationForKey:key];
+            if ([rawAnimation isKindOfClass:[CAPropertyAnimation class]]) {
+                CAPropertyAnimation *animation = (CAPropertyAnimation *)rawAnimation;
+                if ([animation.keyPath isEqualToString:@"bounds.size"]) {
+                    [self.placeholderView.layer addAnimation:animation forKey:key];
+                }
+            }
+        }
     }
 
     - (void)replacePlaceholderViewWithPlugView {
@@ -127,36 +129,6 @@
             [self.placeholderView removeFromSuperview];
             self.plugView.frame = self.socketView.bounds;
             [self.socketView addSubview:self.plugView];
-        }
-    }
-
-    - (void)getSocketSizeMostRecentAdditiveBasicAnimation:(CABasicAnimation **)animationOut key:(NSString **)keyOut {
-        CABasicAnimation *mostRecentAnimation = nil;
-        NSString *mostRecentAnimationKey = nil;
-        CFTimeInterval mostRecentBeginTime = -HUGE_VAL;
-        for (NSString *key in self.socketView.layer.animationKeys) {
-            CABasicAnimation *animation = (CABasicAnimation *)[self.socketView.layer animationForKey:key];
-            if ([animation isKindOfClass:[CABasicAnimation class]] && [animation.keyPath isEqualToString:@"bounds.size"] && animation.additive && animation.beginTime > mostRecentBeginTime) {
-                mostRecentBeginTime = animation.beginTime;
-                mostRecentAnimation = animation;
-            }
-        }
-        *animationOut = mostRecentAnimation;
-        *keyOut = mostRecentAnimationKey;
-    }
-
-    - (void)insertPlaceholderView {
-
-        for (NSString *key in self.socketView.layer.animationKeys) {
-            CAAnimation *rawAnimation = [self.socketView.layer animationForKey:key];
-            if (![rawAnimation isKindOfClass:[CABasicAnimation class]]) {
-                continue;
-            }
-            
-            CABasicAnimation *animation = (CABasicAnimation *)rawAnimation;
-            if ([animation.keyPath isEqualToString:@"bounds.size"]) {
-                [self.plugView.layer addAnimation:animation forKey:key];
-            }
         }
     }
 
